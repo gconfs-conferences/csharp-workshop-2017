@@ -43,6 +43,10 @@ namespace Partie1
                 {-2,-8,42}
             };
             Console.WriteLine("Sum: {0}", Sum(mat1, mat2));
+            
+            // Parite
+            List<int> l1 = new List<int>(new int[] { 4, 5, 8, 3, 2, 5});
+            Console.WriteLine("Parite: {0}", Parite(l1));
         }
 
         private static long Fibo(long n)
@@ -81,6 +85,14 @@ namespace Partie1
                 for (int j = 0; j < mat1.GetLength(1); j++)
                     res[i, j] = mat1[i, j] + mat2[i, j];
             return res;
+        }
+
+        private static bool Parite(List<int> list)
+        {
+            for (int i = 0; i < list.Count; i++)
+                if (list[i] % 2 != i % 2)
+                    return false;
+            return true;
         }
     }
 }
