@@ -11,7 +11,7 @@ namespace Partie2
         private int physical_armor_;
         private int magical_armor_;
 
-        private static ulong nbStudent;
+        private static ulong nbStudent = 0;
 
         public Student(string name, int life, int damage, bool isMagician, int physicalArmor, int magicalArmor)
         {
@@ -22,6 +22,13 @@ namespace Partie2
             physical_armor_ = physicalArmor;
             magical_armor_ = magicalArmor;
             nbStudent++;
+        }
+        
+        // Static functions
+
+        public static void DisplayNbStudent()
+        {
+            Console.WriteLine("Il y a {0} etudiants.", nbStudent);
         }
         
         // Methodes
