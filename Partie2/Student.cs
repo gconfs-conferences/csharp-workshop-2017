@@ -4,23 +4,23 @@ namespace Partie2
 {
     public class Student
     {
-        private string _name;
-        private int _life;
-        private int _damage;
-        public bool _is_magician;
-        public int _physical_armor;
-        public int _magical_armor;
+        private string name_;
+        private int life_;
+        private int damage_;
+        public bool is_magician_;
+        public int physical_armor_;
+        public int magical_armor_;
 
         private static ulong nbStudent = 0;
 
         public Student(string name, int life, int damage, bool isMagician, int physicalArmor, int magicalArmor)
         {
-            _name = name.ToUpper();
-            _life = life;
-            _damage = damage;
-            _is_magician = isMagician;
-            _physical_armor = physicalArmor;
-            _magical_armor = magicalArmor;
+            name_ = name.ToUpper();
+            life_ = life;
+            damage_ = damage;
+            is_magician_ = isMagician;
+            physical_armor_ = physicalArmor;
+            magical_armor_ = magicalArmor;
             nbStudent++;
         }
         
@@ -36,35 +36,35 @@ namespace Partie2
         public void TakeDamage(int damage, bool isMagical)
         {
             if (isMagical)
-                this._life -= Math.Max(0, damage - this._magical_armor);
+                this.life_ -= Math.Max(0, damage - this.magical_armor_);
             else
-                this._life -= Math.Max(0, damage - this._physical_armor);
-            this._life = Math.Max(0, this._life);
+                this.life_ -= Math.Max(0, damage - this.physical_armor_);
+            this.life_ = Math.Max(0, this.life_);
         }
         
         public void Attack(Student s)
         {
-            s.TakeDamage(this._damage, this._is_magician);
+            s.TakeDamage(this.damage_, this.is_magician_);
         }
         
         // Getters & Setters
         
         public string Name
         {
-            get { return _name; }
-            set { _name = value.ToUpper(); }
+            get { return name_; }
+            set { name_ = value.ToUpper(); }
         }
 
         public int Life
         {
-            get { return _life; }
-            set { _life = Math.Max(0, value); }
+            get { return life_; }
+            set { life_ = Math.Max(0, value); }
         }
 
         public int Damage
         {
-            get { return _damage; }
-            set { _damage = Math.Max(Math.Min(value, 10), -10); }
+            get { return damage_; }
+            set { damage_ = Math.Max(Math.Min(value, 10), -10); }
         }
     }
 }
