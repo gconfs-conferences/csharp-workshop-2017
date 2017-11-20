@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
+using System.Security.Cryptography.X509Certificates;
 
 namespace Partie1
 {
@@ -44,7 +46,11 @@ namespace Partie1
             
             // Parite
             List<int> l1 = new List<int>(new int[] { 4, 5, 8, 3, 2, 5});
-            Console.WriteLine("Parite: {0}", Parite(l1));
+
+            int x = 3;
+            int y = 42;
+            Swap(ref x, ref y);
+            Console.WriteLine("x: {0}  y: {1}", x, y);
         }
 
         private static long Fibo(long n)
@@ -69,6 +75,13 @@ namespace Partie1
             return n * Fact(n - 1);
         }
 
+        private static void Swap(ref int x, ref int y)
+        {
+            int swp = x;
+            x = y;
+            y = swp;
+        }
+        
         private static long MinInTab(long[] tab)
         {
             if (tab.Length == 0)
@@ -91,6 +104,17 @@ namespace Partie1
                 if (list[i] % 2 != i % 2)
                     return false;
             return true;
+        }
+
+        private static uint NbBitsSet(long number)
+        {
+            uint n = 0;
+            while (number != 0)
+            {
+                n += ((number & 1) == 1) ? 1u : 0u;
+                number >>= 1;
+            }
+            return n;
         }
     }
 }
