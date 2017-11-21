@@ -1,0 +1,174 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%            styles pour les sujets de TP C#
+%
+%                    Nathalie Bouquet (sept.04.2016)
+%                    Modifié par Julien Birene (nov.08.2016)
+%                    Modifié par Jean-Baptiste GALET(nov.09.2016)
+%                    Modifié par Yohann LEON (nov.16.2016)
+%                    Modifié par Florian AMSALLEM (sep.22.2017)
+%                    Modifié par Alexandre KIRSZENBERG (oct.15.2017)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Encoding
+\usepackage[utf8]{inputenc}				% Pour les caractères accentués
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Taille de la page
+\textwidth 16cm
+\textheight 23.5cm
+\headsep 1cm
+\topmargin -1.5cm
+\oddsidemargin 0cm
+\setlength{\unitlength}{1cm}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%                    Entete et titre feuille TP
+%
+%
+%            Utilisation : enteteTPCS{<no>}{<date>}{<titre>}
+%
+\usepackage{fancyhdr}
+\newcommand{\enteteTPCS}[4]{
+\pagestyle{fancy} \lhead{{\bf \csharp}\\
+{\sc tp} $#1$ -- #2} \rhead{{\small Info-Sup}\\ {\sc Epita}}
+\lfoot{\includegraphics[height=1cm]{img/GConfs.png}}
+\rfoot{\includegraphics[height=1.3cm]{img/logo_acdc.png}}
+\begin{center}
+{\Large {\bf #3}}\\
+#4
+\end{center}
+\bigskip}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%        si besoin de graph
+%
+\usepackage{graphicx,color}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%   les symboles mathématiques
+\usepackage{latexsym}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%  environnement pour les citations
+%  environnement pour le code
+%  environnement pour la correction (pdf)
+%  environnement pour les hints
+%  envirommenent pour les tables
+%
+\usepackage{alltt}
+\usepackage{fancybox}
+\usepackage{framed}
+\usepackage{sectionbox}
+\usepackage{hyperref}
+\usepackage{minted}
+\usepackage{tabularx}
+
+\newenvironment{fancyquote}[2]
+{
+\begin{center}
+\begin{minipage}{0.8\textwidth}
+\og \emph{#1} \fg
+\begin{flushright}
+#2
+\end{flushright}
+\end{minipage}
+\end{center}
+}
+
+\renewenvironment{leftbar}{%
+ \def\FrameCommand{\vrule width .5pt \hspace{10pt}}%
+ \MakeFramed {\advance\hsize-\width \FrameRestore}}%
+{\endMakeFramed}
+
+\newenvironment{hint}{%
+  \begin{flushright}%
+	\begin{minipage}{0.9\textwidth}%
+	\textbf{Hint}%
+	\begin{leftbar}%
+}{%
+	\end{leftbar}%
+  \end{minipage}%
+	\end{flushright}%
+}
+
+\newenvironment{code}{%
+\definecolor{sectboxfillcol}{rgb}{1,1,1}
+\VerbatimEnvironment
+\begin{center}%
+\framesectionbox
+\begin{sectionbox}{}
+\begin{minipage}{\linewidth}%
+\begin{minted}[tabsize=4,xleftmargin=20pt,linenos]{csharp}}
+{%
+\end{minted}%
+\end{minipage}%
+\end{sectionbox}
+\end{center}}
+
+\newenvironment{shell}%
+{
+\definecolor{sectboxfillcol}{rgb}{1,1,1}
+\VerbatimEnvironment
+\begin{center}
+\framesectionbox
+\begin{sectionbox}{}
+\begin{minipage}{0.9\textwidth}
+\begin{Verbatim}
+}%
+{
+\end{Verbatim}
+\end{minipage}
+\end{sectionbox}
+\end{center}
+}
+
+\newenvironment{raw}{%
+\definecolor{sectboxfillcol}{rgb}{1,1,1}
+\VerbatimEnvironment
+\begin{center}%
+\framesectionbox
+\begin{sectionbox}{}
+\begin{minipage}{\linewidth}%
+\begin{Verbatim}
+[tabsize=4,xleftmargin=20pt,linenos]}
+{%
+\end{Verbatim}%
+\end{minipage}%
+\end{sectionbox}
+\end{center}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%    C# raccourcis et environnements
+%
+
+% C# en petites capitales !
+\newcommand{\csharp}{\textsc{C\#} }
+% \code : pour insérer du C# sur une ligne : (attention aux symboles !)
+\newcommand{\codeil}{\texttt}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%    Divers
+
+% euro !
+\usepackage{textcomp}
+% degré : °
+\newcommand{\de}{\textsuperscript{o}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%    Image de fond
+%    La commande \background affiche l'image de fond sur toutes les pages
+%    USELESS pour le moment
+\usepackage{tikz}
+
+\newcommand{\addbackground}{
+\begin{tikzpicture}[remember picture,overlay]
+	\node[text opacity=0.1] at (current page.center){\includegraphics[height=0.5\textheight]{logo}};
+\end{tikzpicture}
+}

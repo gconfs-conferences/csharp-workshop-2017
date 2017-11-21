@@ -1,5 +1,13 @@
-#RiderC#
+# RiderC#
 .idea/
 *.*.iml
 */bin/
 */obj/
+
+# Subject (Latex)
+*.aux
+*.log
+*.out
+*.pdf
+*.pyg
+*_minted*

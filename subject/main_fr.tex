@@ -1,0 +1,37 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage{tpcs_fr}
+\usepackage{hyperref}
+\usepackage[normalem]{ ulem }
+\usepackage{soul}
+\usepackage{siunitx}
+\usepackage{graphicx}
+\usepackage{blindtext} % USE FOR LOREM IPSUM
+
+\usepackage{listings}
+\lstset{
+  language=[Sharp]C,
+  basicstyle=\ttfamily\small,
+  frame=single,
+  keywordstyle=\bfseries,
+  showstringspaces=false,
+}
+
+\textheight 24cm
+\textwidth 16cm
+\oddsidemargin 0cm
+\topmargin -0.5cm
+
+\begin{document}
+\enteteTPCS{GConfs}{24 Novembre 2017}{How to beat an ACDC 101}{Florian Amsallem \& Hugo Verjus}
+
+\input{src_fr/intro}
+
+\input{src_fr/exo}
+
+\begin{center}
+    \vspace{15mm}
+    \textbf{These violent deadlines have violent ends.}
+\end{center}
+
+\end{document}
