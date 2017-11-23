@@ -46,6 +46,11 @@ namespace Partie2
         {
             s.TakeDamage(this.damage_, this.is_magician_);
         }
+
+        public virtual void Status()
+        {
+            Console.WriteLine("I still have {0} HP.", life_);
+        }
         
         // Getters & Setters
         

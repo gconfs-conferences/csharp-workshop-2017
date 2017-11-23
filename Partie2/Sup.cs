@@ -14,5 +14,10 @@ namespace Partie2
         {
             Console.WriteLine("Il y a {0} sups", nbSup);
         }
+        
+        public override void Status()
+        {
+            Console.WriteLine("Please help! I have {0} HP left.", Life);
+        }
     }
 }
