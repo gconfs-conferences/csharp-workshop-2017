@@ -7,7 +7,8 @@ namespace Partie2
     {
         public static void Main(string[] args)
         {
-            // TODO
+            Arena arena =  new Arena(100);
+            arena.ResolveFights();
         }
     }
 }

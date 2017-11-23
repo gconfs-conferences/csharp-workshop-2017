@@ -33,13 +33,21 @@ namespace Partie2
             round_++;
         }
 
+        public Student GetWinner()
+        {
+            if (firstStudent_.Life == 0 && secondStudent_.Life != 0)
+                return secondStudent_;
+            if (firstStudent_.Life != 0 && secondStudent_.Life == 0)
+                return firstStudent_;
+            return null;
+        }
+        
         public void Finish()
         {
             Console.WriteLine("-- The fight is done --");
-            if (firstStudent_.Life == 0 && secondStudent_.Life != 0)
+            Student winner = GetWinner();
+            if (winner == null)
                 Console.WriteLine("{0} Won this fight!", secondStudent_.Name);
-            else if (firstStudent_.Life != 0 && secondStudent_.Life == 0)
-                Console.WriteLine("{0} Won this fight!", firstStudent_.Name);
             else
                 Console.WriteLine("No one won this fight!");
         }
