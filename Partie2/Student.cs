@@ -50,7 +50,7 @@ namespace Partie2
 
         public virtual void Status()
         {
-            Console.WriteLine("I still have {0} HP.", life);
+            Console.WriteLine("{0}: I still have {1} HP.", name, life);
         }
         
         // Getters & Setters

@@ -23,7 +23,7 @@ namespace Partie2
 
         public override void Status()
         {
-            Console.WriteLine("You can't beat me, I still have {0} HP.", Life);
+            Console.WriteLine("{0}: You can't beat me, I still have {1} HP.", Name, Life);
         }
     }
 }

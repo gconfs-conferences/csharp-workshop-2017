@@ -17,7 +17,7 @@ namespace Partie2
         
         public override void Status()
         {
-            Console.WriteLine("Please help! I have {0} HP left.", Life);
+            Console.WriteLine("{0}: Please help! I have {1} HP left.", Name, Life);
         }
     }
 }
