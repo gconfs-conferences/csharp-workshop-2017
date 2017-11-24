@@ -1,13 +1,11 @@
 \newpage
-\section{Exercises}
+\section{Partie 1}
 
-\subsection{Partie 1}
-
-Voici un ensemble d'exercices utilisants les principes de base du C\#.
-Il ne sont \textbf{pas} triés par ordre de difficulté. Si vous êtes bloqués, demandez de
+Voici un ensemble d'exercices utilisant les principes de base du C\#.
+Ils ne sont \textbf{pas} triés par ordre de difficulté. Si vous êtes bloqués, demandez de
 l'aide aux assistants.
 
-\subsubsection{Fibonacci}
+\subsection{Fibonacci}
 
 Le but de ce premier exercice est d'implémenter la suite de Fibonacci en C\#.
 Pour rappel, la suite de Fibonacci est définie comme suit:
@@ -30,7 +28,7 @@ private static long Fibo(long n)
 }
 \end{code}
 
-\subsubsection{Factorielle}
+\subsection{Factorielle}
 
 Pour cet exercice, vous devez implémenter la fonction factorielle.
 
@@ -51,7 +49,7 @@ private static long Fact(long n)
 }
 \end{code}
 
-\subsubsection{Swapons}
+\subsection{Swapons}
 
 Pour cet exercice, vous allez devoir utiliser les références.
 Le but est d'échanger les valeurs de \(x\) et de \(y\).
@@ -63,7 +61,7 @@ private static void Swap(ref int x, ref int y)
 }
 \end{code}
 
-\subsubsection{MinTab}
+\subsection{MinTab}
 
 Nous allons utiliser les tableaux. Votre but est de trouver la plus petite valeur
 dans un tableau de \textbf{long}.
@@ -76,7 +74,7 @@ private static long MinTab(long[] tab)
 }
 \end{code}
 
-\subsubsection{Sum}
+\subsection{Sum}
 
 Il est possible en C\# de déclarer des matrices. 
 Par exemple, pour déclarer la matrice identité de taille 3:
@@ -92,7 +90,7 @@ int[,] identity3 = new int[,]
 
 Pour cet exercice, vous devez calculer la somme de deux matrices de même dimension.
 
-Rappel:
+\underline{Rappel}:
 
 $$
 \mathcal{A} + \mathcal{B} = \begin{pmatrix}
@@ -122,9 +120,9 @@ private static long[,] Sum(long[,] mat1, long[,] mat2)
 }
 \end{code}
 
-\subsubsection{Parité}
+\subsection{Parité}
 
-Pour cet exercice, nous allons utiliser les \textbf{listes}. Vous devez vérifier qu'une liste donnée respecte la parité ou non.
+Pour cet exercice, nous allons utiliser les \textbf{listes}. Vous devez vérifier qu'une liste donnée respecte la parité ou non.\\
 
 On dit qu'une liste respecte la parité si elle est composée d'une alternance d'entiers pairs et impairs en commençant par un entier pair.
 
@@ -145,9 +143,9 @@ private static bool Parite(List<int> list)
 }
 \end{code}
 
-\subsubsection{Bits Counter}
+\subsection{Bits Counter}
 
-Vous devez compter le nombre de bits mis à \(1\) dans un nombre donné.
+Vous devez compter le nombre de bits mis à \(1\) dans un nombre donné.\\
 
 \textbf{Conseil}: Utilisez les opérateurs bitwise.
 
@@ -160,34 +158,41 @@ private static uint NbBitsSet(long number)
 \end{code}
 
 \newpage
-\subsection{Partie 2}
+\section{Partie 2}
 
 Les choses sérieuses vont commencer ! Vous allez devoir créer vos premières classes et objets.
 
-Le but de cet exercice est d'implémenter 3 classes:
+Le but de cet exercice est d'implémenter les classes:
 \begin{itemize}
 \item Student 
 \item ACDC 
-\item Sup \\
+\item Sup 
+\item Fight
+\item Arena\\
 \end{itemize}
 
 Une fois que cela est fait, nous allons pouvoir faire combattre nos étudiants les uns
-contre les autres.
+contre les autres!
+
+\subsection{Student}
+
+Comme vous pouvez l'imaginer la classe \texttt{Student} va représenter un étudiant.
+Celui-ci possède des points de vie, des dégâts, etc\ldots
 
 \subsubsection{Student Constructor}
 
 Vous l'avez compris vous allez implémenter votre premier constructeur. 
-Mais avant cela, il faut définir les attributs de la classe.
+Mais avant cela, il faut définir les attributs de la classe.\\
 
 Voici la liste des attributs et leur type:
 
 \begin{itemize}
-\item name : string
-\item life : int
-\item damage : int
-\item is\_magician : bool
-\item physical\_armor : int
-\item magical\_armor : int\\
+\item name : \texttt{string}
+\item life : \texttt{int}
+\item damage : \texttt{int}
+\item isMagician : \texttt{bool}
+\item physicalArmor : \texttt{int}
+\item magicalArmor : \texttt{int}\\
 \end{itemize}
 
 Vous pouvez mettre la protection des attributs à \textbf{public} pour le moment.
@@ -196,19 +201,19 @@ Vous pouvez mettre la protection des attributs à \textbf{public} pour le moment
 class Student
 {
 	// Attributs (A vous de compléter)
-    public string name_;
+    public string name;
     // ...
     
     // Constructeur (A vous de compléter)
     public Student(string name, /* ... */)
     {
-    	name_ = name;
+    	this.name = name;
         // ...
     }
 }
 \end{code}
 
-\subsubsection{Take damage}
+\subsection{Take damage}
 
 Maintenant que nos étudiants ont des attributs et peuvent être instanciés (construits), vous allez implémenter une méthode. 
 
@@ -220,12 +225,12 @@ $$
 life = life - (damage - armor)
 $$
 
-Il faut compléter et modifier la formule de manière à respecter les points suivant:
+Il faut compléter et modifier la formule de manière à respecter les points suivants:
 
 \begin{itemize}
 \item Armor dépend du type de dégât.
 \item L'étudiant ne peut pas gagner de la vie.
-\item L'étudiant ne peut pas avoir une vie négatif.
+\item L'étudiant ne peut pas avoir une vie négative.
 \end{itemize}
 
 
@@ -236,132 +241,395 @@ public void TakeDamage(int damage, bool isMagical)
 }
 \end{code}
 
+\subsection{Attack}
+
+Nous souhaitons maintenant pouvoir attaquer d'autre étudiants.
+
+Implémentez la fonction \texttt{Attack} qui prend un étudiant en paramètre et l'attaque.
+\newline
+
+\danger \textbf{Attention} un étudiant ne peut pas s'attaquer lui-même! Lancer une exception dans ce cas.
+\begin{code}
+public void Attack(Student s)
+{	
+	// TODO
+}
+\end{code}
+
+\subsection{Status}
+
+Pour connaître l'état d'un étudiant, nous allons faire une procédure qui affiche dans la console l'état de l'étudiant. Par exemple, \textit{"I still have 42 HP."}.
+
+\begin{code}
+public void Status()
+{
+	// TODO
+}
+\end{code}
+
+\subsection{Counter}
+
+Nous souhaitons contrôler le nombre d'élèves via une variable \texttt{nbStudent}.
+
+Déclarez et incrémentez cette variable de manière à ce qu'elle compte le nombre d'élèves.
+
+Vous pouvez faire la procédure \texttt{DisplayNbStudent} qui affiche le nombre d'étudiants. Par exemple, \textit{"There are 42 student(s)."}
+
+\underline{Tips}: Utilisez le mot clé \texttt{static}.
+
+\subsection{Getters \& Setters}
+
+Pour cette classe nous souhaitons pouvoir contrôler les valeurs de certains attributs. 
+De ce fait, les attributs suivants devront être passés en \emph{private} : \textbf{name, life, dammage.}\\
+Ainsi, comme vous avez pu le voir en conférence, vous allez devoir créer vos propres getters \& setters. Pour la vie, nous souhaitons contrôler que dans aucun cas, l'objet puisse avoir une vie négative. Pour cela, voici un exemple :
+
+\begin{code}
+public string Life
+{
+	get { return life_; }
+	set { life_ = Math.Max(0, value); }
+}
+\end{code}
+
+Maintenant, à vous de faire de même pour que, quelque soit le nom entré par l'utilisateur, l'attribut \texttt{name} de l'objet soit toujours en majuscule. 
+
+\begin{code}
+public string Name
+{
+	// TODO
+}
+\end{code}
+
+Quant aux dégâts, ceux-ci ne pourront jamais excéder 10 ou être inférieur à 0.
+\begin{code}
+public int Damage
+{
+	// TODO
+}
+\end{code}
+
+\subsection{Tests}
+
+Pour pouvoir tester vos fonctions, vous pouvez utiliser les appels des fonctions suivantes dans votre main:
+
+\begin{code}
+public static void Main(string[] args)
+{
+    Student flomonster = new Student("Flomonster", 100, 10, true, 0, 5);
+    Student theo = new Student("Theo", 75, 7, false, 5, 0);
+    Student.DisplayNbStudent();
+    flomonster.Name = "Florian";
+    flomonster.Attack(theo);
+    theo.Status();
+    flomonster.Damage = 30;
+    try
+    {
+    	theo.Attack(theo);
+    }
+    catch (Exception e)
+    {
+    	Console.WriteLine("You tried to attack yourself.");
+    }
+    while (theo.Life != 0)
+    {
+        flomonster.Attack(theo);
+		theo.Status();
+	}
+}
+\end{code}
+
 \newpage
-\subsection{Bonus}
+Et cela doit afficher le résultat suivant:
 
-\subsubsection{Print Int Array}
+\begin{shell}
+There are 2 student(s).
+THEO: I still have 65 HP.
+You tried to attack yourself.
+THEO: I still have 55 HP.
+THEO: I still have 45 HP.
+THEO: I still have 35 HP.
+THEO: I still have 25 HP.
+THEO: I still have 15 HP.
+THEO: I still have 5 HP.
+THEO: I still have 0 HP.
+\end{shell}
 
-Le but de cet exercice est d'afficher dans la console l'intégralité d'un tableau d'entier.
+\subsection{Classe Sup}
 
-Exemple :
+Nous allons pouvoir passer à notre deuxième classe, la classe \texttt{Sup}. Maintenant que vous êtes des experts, vous allez implémenter
+les attributs, constructeurs et méthodes sans squelette:\\ 
+
+Voici la description de la classe \texttt{Sup}: 
+
+\begin{itemize}
+\item Un Sup est un étudiant (la classe hérite donc de la classe \texttt{Student}).
+\item Un Sup n'est pas magicien.
+\item La variable \texttt{nbSup} compte le nombre de Sup instanciés.
+\item La procédure \texttt{DisplayNbSup} affiche le nombre de Sup instanciés. Par exemple, \textit{"There are 42 Sups."}
+\item La procédure \texttt{Status} n'a pas le même comportement que la classe \texttt{Student}. Par exemple, elle affiche \textit{"ALEXANDRE: Please help! I have 42 HP left."}.\\
+\end{itemize}
+
+\underline{Rappel}: N'hésitez pas à appeler un assistant.
+
+\subsubsection{Tests}
 
 \begin{code}
-[0, 34, 5, 55, 666, 33, 23, 2] // Voici l'affichage attendu.
-[7, 54, 55, 58, 996, 562, 0] // Voici un autre exemple.
+public static void Main(string[] args)
+{
+	List<Sup> listSup = new List<Sup>();
+    for (int i = 0; i < 10; i++)
+    {
+    	listSup.Add(new Sup("Alexandre", 75, 7, 0, 5));
+        Sup.DisplayNbSup();
+    }
+    int damage = 5; 
+    foreach (Sup sup in listSup)
+    {
+    	sup.TakeDamage(damage, true);
+    	damage += 5;
+        sup.Status();
+    }
+}
+\end{code}
+\newpage
+Cela est censé produire le résultat suivant:
+\begin{shell}
+There are 1 Sups.
+There are 2 Sups.
+There are 3 Sups.
+There are 4 Sups.
+There are 5 Sups.
+There are 6 Sups.
+There are 7 Sups.
+There are 8 Sups.
+There are 9 Sups.
+There are 10 Sups.
+ALEXANDRE: Please help! I have 75 HP left.
+ALEXANDRE: Please help! I have 70 HP left.
+ALEXANDRE: Please help! I have 65 HP left.
+ALEXANDRE: Please help! I have 60 HP left.
+ALEXANDRE: Please help! I have 55 HP left.
+ALEXANDRE: Please help! I have 50 HP left.
+ALEXANDRE: Please help! I have 45 HP left.
+ALEXANDRE: Please help! I have 40 HP left.
+ALEXANDRE: Please help! I have 35 HP left.
+ALEXANDRE: Please help! I have 30 HP left.
+\end{shell}
+\subsection{Classe ACDC}
+La Classe \texttt{ACDC} va elle aussi dépendre de la classe \texttt{Student}, cependant elle n'est pas encore présente dans le squelette : il va donc falloir la créer. 
+La description de la classe est la suivante :
+\begin{itemize}
+\item Un ACDC est un étudiant (la classe hérite donc de la classe \texttt{Student}).
+\item Un ACDC est un magicien.
+\item Tous les autres attributs restent inchangés.
+\item La variable \texttt{nbACDC} compte le nombre d'ACDC instanciés.
+\item La procédure \texttt{DisplayACDC} affiche le nombre d'ACDC instanciés. Par exemple, \emph{"There are 24 ACDC."}
+\item La procédure \texttt{Status} n'a pas le même comportement que la classe \texttt{Student}. Par exemple, elle affiche \textit{"FLORIAN: You can't beat me, I have 42 HP left."}.
+\end{itemize}
+\newpage
+\subsubsection{Tests}
+Voici une suite de tests:
+\begin{code}
+public static void Main(string[] args)
+{
+	List<ACDC> listACDC = new List<ACDC>();
+    for (int i = 0; i < 5; i++)
+    {
+    	listACDC.Add(new ACDC("Florian", 100, 10, 5, 5));
+        ACDC.DisplayNbACDC();
+    }
+    int damage = 5; 
+    foreach (ACDC acdc in listACDC)
+    {
+    	acdc.TakeDamage(damage, false);
+    	damage += 10;
+        acdc.Status();
+    }
+}
+\end{code}
+Cela est censé produire le résultat suivant:
+\begin{shell}
+There are 1 ACDC.
+There are 2 ACDC.
+There are 3 ACDC.
+There are 4 ACDC.
+There are 5 ACDC.
+FLORIAN: You can't beat me, I still have 100 HP.
+FLORIAN: You can't beat me, I still have 90 HP.
+FLORIAN: You can't beat me, I still have 80 HP.
+FLORIAN: You can't beat me, I still have 70 HP.
+FLORIAN: You can't beat me, I still have 60 HP.
+\end{shell}
+\subsection{Classe Fight}
+
+Laissez place au combat ! On continue avec la classe \texttt{Fight} qui va permettre de gérer les combats entre étudiants.
+
+\begin{itemize}
+\item Une \texttt{Fight} possède deux étudiants (\texttt{student1} et \texttt{student2}).
+\item Une \texttt{Fight} possède un compteur de tours \texttt{round} de type \texttt{uint}.\\
+\end{itemize}
+
+\danger Tous ces attributs ne doivent pas être modifiables. Ils peuvent cependant être accessibles.
+
+\subsubsection{Is it finished ?}
+
+La méthode \texttt{isFinished} renvoie \texttt{true} si l'un des étudiants a une vie nulle; autrement, elle renvoie \texttt{false}.
+\begin{code}
+public bool isFinished()
+{
+    // TODO
+    return false;
+}
 \end{code}
 
-Voici le prototype de la fonction:
+\subsubsection{Update}
+
+La méthode \texttt{Update} simule l'attaque d'un étudiant sur l'autre puis l'inverse.
+Si \texttt{verbose} est à \texttt{true}, alors la méthode affiche le \texttt{round} courant et l'état des étudiants. Par exemple:\\
+
+\begin{shell}
+- Round 42
+FLOMONSTER: You can't beat me, I still have 100 HP.
+THIBAULT: Please help! I have 5 HP left.
+\end{shell}
+
 \begin{code}
- static void print_array(int[] array)
+public void Update(bool verbose)
+{
+    // TODO
+}
+\end{code}
+
+\subsubsection{GetWinner}
+
+Cette méthode renvoie l'étudiant vainqueur du combat. S'il n'y a pas encore de gagnant ou si les deux
+étudiants sont morts, la fonction renvoie \texttt{null}.
+
+\begin{code}
+public Student GetWinner()
+{
+	// TODO
+    return null;
+}
+\end{code}
+
+\subsubsection{Finish}
+
+Cette méthode écrit dans la console le résultat du combat. Par exemple:
+
+\begin{shell}
+// Si le combat est fini
+The fight is done.
+FLOMONSTER won this fight!
+// Sinon
+No one won this fight!
+\end{shell}
+
+\subsubsection{Tests}
+
+Voici de quoi tester votre code:\\
+
+\begin{code}
+Student flomonster = new Student("Flomonster", 100, 10, true, 0, 5);
+Student theo = new Student("Theo", 75, 7, false, 5, 0);
+Fight fight = new Fight(flomonster, theo);
+while (!fight.isFinished())
+	fight.Update(true);
+Console.WriteLine("Winner: {0}", fight.GetWinner().Name);
+fight.Finish();
+\end{code}
+
+\begin{shell}
+-- Round 1 --
+FLOMONSTER: I still have 93 HP.
+THEO: I still have 65 HP.
+-- Round 2 --
+FLOMONSTER: I still have 86 HP.
+THEO: I still have 55 HP.
+-- Round 3 --
+FLOMONSTER: I still have 79 HP.
+THEO: I still have 45 HP.
+-- Round 4 --
+FLOMONSTER: I still have 72 HP.
+THEO: I still have 35 HP.
+-- Round 5 --
+FLOMONSTER: I still have 65 HP.
+THEO: I still have 25 HP.
+-- Round 6 --
+FLOMONSTER: I still have 58 HP.
+THEO: I still have 15 HP.
+-- Round 7 --
+FLOMONSTER: I still have 51 HP.
+THEO: I still have 5 HP.
+-- Round 8 --
+FLOMONSTER: I still have 44 HP.
+THEO: I still have 0 HP.
+Winner: FLOMONSTER
+-- The fight is done --
+FLOMONSTER won this fight!
+\end{shell}
+
+\subsection{Classe Arena}
+
+Maintenant nous allons pouvoir créer une classe \texttt{Arena} qui réalisera un certain nombre de matchs. Pour stocker l'ensemble des matchs, nous allons utiliser une Pile. Cet attribut s'appelle \texttt{matchUp} il est donc de type \texttt{Stack<Fight>}\\
+
+\begin{hint}
+Pour plus d'informations sur l'utilisation des piles en \csharp, vous pouvez aller voir le fonctionnement de la classe \href{https://msdn.microsoft.com/fr-fr/library/system.collections.stack(v=vs.110).aspx}{\texttt{Stack}} sur le site MSDN.
+\end{hint}
+
+\subsubsection{Constructeurs}
+
+Pour cette classe, nous allons utiliser deux différents constructeurs. 
+
+Le premier constructeur prend en paramètre directement la pile de combats.\\
+
+\begin{code}
+public Arena(Stack<Fight> matchup)
 {
 	// TODO
 }
 \end{code}
 
-Cet exercice va vous permettre de vérifier le tableau trié par l'algorithme qui suit.
+Pour ce qui est du second constructeur, il prend en paramètre un \texttt{uint} qui représente alors le nombre de combats à créer. Pour créer un combat vous devez:
 
-\subsubsection{Insertion Sort}
+\begin{itemize}
+\item Créer un Sup avec des attributs aléatoire.
+\item Créer un ACDC avec des attributs aléatoire.
+\item Créer le "fight" entre le Sup et l'ACDC.
+\item Empiler le nouveau "fight" dans la pile.
+\end{itemize}
 
-Le but de cet exercice est d'implémenter un algorithme de tri par insertion.
-
-\texttt{Insertion sort} est très simple : 
-
-\begin{code}
-Insertion Sort(int[] tab)
-	Pour i allant de 0 à (taille du tableau - 1)
-		min = tab[i]
-        min_pos = i
-        Pour j allant de (i + 1) à (taille du tableau - 1)
-        	Si tab[j] < min alors
-            	min = tab[j]
-                min_pos = j
-       	tab[min_pos] = tab[i]
-        tab[i] = min
-\end{code}
-
-A vous de traduire maintenant :
+\begin{hint}
+Allez voir du côté de la classe \href{https://msdn.microsoft.com/fr-fr/library/system.random(v=vs.110).aspx}{\texttt{Random}} sur MSDN.
+\end{hint}
 
 \begin{code}
-static void insert_sort(int[] array)
-{
- 	// TODO
-}
-\end{code}
-
-Si vous souhaitez des informations supplémentaires sur \texttt{Insertion Sort}, vous pouvez vous référer à \href{https://en.wikipedia.org/wiki/Insertion_sort}{Wikipédia}.
-
-
-Exemple :
-
-\begin{code}
-[0, 34, 5, 55, 666, 33, 23, 2] // affichage de print_array() avant le tri
-[0, 2, 5, 23, 33, 34, 55, 666] // affichage de print_array() après le tri
-\end{code}
-
-\subsubsection{Quick Sort}
-
-\texttt{Insertion Sort} ayant une complexité moyenne de $n^2$, il est recommandé de ne pas l'utiliser sur des tableaux de taille importante. On lui préférera \texttt{Quick Sort}, qui a une complexité moyenne de $n*log_2(n)$.
-
-L'algorithme de \texttt{Quick Sort} s'effectue en deux parties : 
-\\\\
-Premièrement, on définit l'élément de gauche comme le ``pivot''. Puis, on fait en sorte que les éléments à gauche du pivot soient inférieurs aux éléments à droite du pivot.
-\\\\
-Ensuite, on répète cette action sur la partie gauche, puis la partie droite du tableau.
-\\\\
-Une illustration et les algorithmes en langage naturel vous seront donnés ci-dessous.\\
-
-\includegraphics[width=15cm]{img/quick_sort.png}
-
-\begin{code}
-Partition(tab, left, right)
-	pivot = tab[left]
-    i = left - 1
-    j = right
-    Tant que ( vrai ) :
-    	// On trouve une valeur qui doit passer à droite
-    	Faire
-        	i = i + 1
-        	tant que (tab[i] < pivot)
-        // On  trouve une valeur qui doit passer à gauche
-        Faire
-        	j = j - 1
-        	tant que (tab[j] > pivot)
-       	// Si la partie de droite passe à gauche alors c'est fini
-       	Si (j <= i)
-        	Si (i == left)
-            	retourner i + 1
-            Sinon
-            	retourner i
-       tmp = tab[i] // on échange tab[i] et tab[j]
-       tab[i] = tab[j]
-       tab[j] = tmp
-\end{code}
-
-\begin{code}
-QuickSort(tab, right, left)
-	Si (right - left > 1)
-    	p = Partition(tab, left, right)
-        QuickSort(tab, left, p)
-        QuickSort(tab, p, right)
-\end{code}
-
-A vous de traduire maintenant :
-
-\begin{code}
-static int partition(int[] array, int left, int right)
-{
-	// TODO
-    return 0;
-}
-\end{code}
-
-\begin{code}
-static void quick_sort(int[] array, int left, int right)
+public Arena(uint nbFight)
 {
 	// TODO
 }
 \end{code}
 
-\underline{Tips} : Vous pouvez tester \texttt{Quick Sort} à l'aide de \texttt{print\_array()}.
+\subsubsection{Méthode}
 
+La classe \texttt{Arena} ne comporte qu'une méthode qui va lancer tous les combats à la suite et indiquer le nombre de victoire pour les ACDC, le nombre de victoire pour les Sups, et le nombre d'égalités.
 
+\begin{code}
+public void ResolveFights()
+{
+	// TODO
+}
+\end{code}
+
+\subsubsection{Tests}
+
+Voici de quoi tester votre code:
+
+\begin{code}
+Arena arena = new Arena(100);
+arena.ResolveFights();
+\end{code}
+
+\begin{shell}
+ACDC: 100 wins / Sups: 0 wins / Draws: 0
+\end{shell}
