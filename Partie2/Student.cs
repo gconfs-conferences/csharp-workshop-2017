@@ -28,7 +28,7 @@ namespace Partie2
 
         public static void DisplayNbStudent()
         {
-            Console.WriteLine("Il y a {0} etudiants.", nbStudent);
+            Console.WriteLine("There is {0} student(s).", nbStudent);
         }
         
         // Methodes
@@ -36,10 +36,9 @@ namespace Partie2
         public void TakeDamage(int damage, bool isMagical)
         {
             if (isMagical)
-                life -= Math.Max(0, damage - magicalArmor);
+                Life -= Math.Max(0, damage - magicalArmor);
             else
-                life -= Math.Max(0, damage - physicalArmor);
-            life = Math.Max(0, life);
+                Life -= Math.Max(0, damage - physicalArmor);
         }
         
         public void Attack(Student s)
