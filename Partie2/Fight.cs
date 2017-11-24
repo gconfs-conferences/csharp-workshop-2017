@@ -44,12 +44,14 @@ namespace Partie2
         
         public void Finish()
         {
-            Console.WriteLine("-- The fight is done --");
             Student winner = GetWinner();
             if (winner == null)
-                Console.WriteLine("{0} Won this fight!", secondStudent.Name);
-            else
                 Console.WriteLine("No one won this fight!");
+            else
+            {
+                Console.WriteLine("-- The fight is done --");
+                Console.WriteLine("{0} Won this fight!", winner.Name);
+            }
         }
 
         public Student FirstStudent
