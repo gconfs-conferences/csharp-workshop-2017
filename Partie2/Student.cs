@@ -4,23 +4,23 @@ namespace Partie2
 {
     public class Student
     {
-        private string name_;
-        private int life_;
-        private int damage_;
-        public bool is_magician_;
-        public int physical_armor_;
-        public int magical_armor_;
+        private string name;
+        private int life;
+        private int damage;
+        public bool isMagician;
+        public int physicalArmor;
+        public int magicalArmor;
 
         private static ulong nbStudent = 0;
 
         public Student(string name, int life, int damage, bool isMagician, int physicalArmor, int magicalArmor)
         {
-            name_ = name.ToUpper();
-            life_ = life;
-            damage_ = damage;
-            is_magician_ = isMagician;
-            physical_armor_ = physicalArmor;
-            magical_armor_ = magicalArmor;
+            this.name = name.ToUpper();
+            this.life = life;
+            this.damage = damage;
+            this.isMagician = isMagician;
+            this.physicalArmor = physicalArmor;
+            this.magicalArmor = magicalArmor;
             nbStudent++;
         }
         
@@ -36,40 +36,40 @@ namespace Partie2
         public void TakeDamage(int damage, bool isMagical)
         {
             if (isMagical)
-                this.life_ -= Math.Max(0, damage - this.magical_armor_);
+                life -= Math.Max(0, damage - magicalArmor);
             else
-                this.life_ -= Math.Max(0, damage - this.physical_armor_);
-            this.life_ = Math.Max(0, this.life_);
+                life -= Math.Max(0, damage - physicalArmor);
+            life = Math.Max(0, life);
         }
         
         public void Attack(Student s)
         {
-            s.TakeDamage(this.damage_, this.is_magician_);
+            s.TakeDamage(damage, isMagician);
         }
 
         public virtual void Status()
         {
-            Console.WriteLine("I still have {0} HP.", life_);
+            Console.WriteLine("I still have {0} HP.", life);
         }
         
         // Getters & Setters
         
         public string Name
         {
-            get { return name_; }
-            set { name_ = value.ToUpper(); }
+            get { return name; }
+            set { name = value.ToUpper(); }
         }
 
         public int Life
         {
-            get { return life_; }
-            set { life_ = Math.Max(0, value); }
+            get { return life; }
+            set { life = Math.Max(0, value); }
         }
 
         public int Damage
         {
-            get { return damage_; }
-            set { damage_ = Math.Max(Math.Min(value, 10), -10); }
+            get { return damage; }
+            set { damage = Math.Max(Math.Min(value, 10), 0); }
         }
     }
 }

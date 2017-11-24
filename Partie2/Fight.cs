@@ -4,41 +4,41 @@ namespace Partie2
 {
     public class Fight
     {
-        private Student firstStudent_;
-        private Student secondStudent_;
-        private uint round_;
+        private Student firstStudent;
+        private Student secondStudent;
+        private uint round;
 
         public Fight(Student firstStudent, Student secondStudent)
         {
-            firstStudent_ = firstStudent;
-            secondStudent_ = secondStudent;
-            round_ = 1;
+            this.firstStudent = firstStudent;
+            this.secondStudent = secondStudent;
+            round = 1;
         }
 
         public bool isFinished()
         {
-            return firstStudent_.Life == 0 || secondStudent_.Life == 0;
+            return firstStudent.Life == 0 || secondStudent.Life == 0;
         }
 
         public void Update(bool verbose)
         {
-            firstStudent_.Attack(secondStudent_);
-            secondStudent_.Attack(firstStudent_);
+            firstStudent.Attack(secondStudent);
+            secondStudent.Attack(firstStudent);
             if (verbose)
             {
-                Console.WriteLine("-- Round {0} --", round_);
-                firstStudent_.Status();
-                secondStudent_.Status();
+                Console.WriteLine("-- Round {0} --", round);
+                firstStudent.Status();
+                secondStudent.Status();
             }
-            round_++;
+            round++;
         }
 
         public Student GetWinner()
         {
-            if (firstStudent_.Life == 0 && secondStudent_.Life != 0)
-                return secondStudent_;
-            if (firstStudent_.Life != 0 && secondStudent_.Life == 0)
-                return firstStudent_;
+            if (firstStudent.Life == 0 && secondStudent.Life != 0)
+                return secondStudent;
+            if (firstStudent.Life != 0 && secondStudent.Life == 0)
+                return firstStudent;
             return null;
         }
         
@@ -47,24 +47,24 @@ namespace Partie2
             Console.WriteLine("-- The fight is done --");
             Student winner = GetWinner();
             if (winner == null)
-                Console.WriteLine("{0} Won this fight!", secondStudent_.Name);
+                Console.WriteLine("{0} Won this fight!", secondStudent.Name);
             else
                 Console.WriteLine("No one won this fight!");
         }
 
         public Student FirstStudent
         {
-            get { return firstStudent_; }
+            get { return firstStudent; }
         }
         
         public Student SecondStudent
         {
-            get { return secondStudent_; }
+            get { return secondStudent; }
         }
         
         public uint Round
         {
-            get { return round_; }
+            get { return round; }
         }
     }
 }
