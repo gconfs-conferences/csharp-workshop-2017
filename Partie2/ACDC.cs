@@ -13,7 +13,7 @@ namespace Partie2
 
         public static void DisplayNbACDC()
         {
-            Console.WriteLine("Il y a {0} sups", nbACDC);
+            Console.WriteLine("There are {0} ACDC.", nbACDC);
         }
 
         public void Taunt()

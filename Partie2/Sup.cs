@@ -12,7 +12,7 @@ namespace Partie2
 
         public static void DisplayNbSup()
         {
-            Console.WriteLine("Il y a {0} sups", nbSup);
+            Console.WriteLine("There are {0} Sups.", nbSup);
         }
         
         public override void Status()

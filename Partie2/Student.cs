@@ -28,7 +28,7 @@ namespace Partie2
 
         public static void DisplayNbStudent()
         {
-            Console.WriteLine("There is {0} student(s).", nbStudent);
+            Console.WriteLine("There are {0} student(s).", nbStudent);
         }
         
         // Methodes
@@ -43,6 +43,8 @@ namespace Partie2
         
         public void Attack(Student s)
         {
+            if (s == this)
+                throw new Exception("You can't hit your self!");
             s.TakeDamage(damage, isMagician);
         }
 
